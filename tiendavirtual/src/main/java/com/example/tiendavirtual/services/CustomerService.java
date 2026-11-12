@@ -9,6 +9,8 @@ import com.example.tiendavirtual.entities.CustomerEntity;
 import com.example.tiendavirtual.mappers.CustomerMapper;
 import com.example.tiendavirtual.models.Customer;
 import com.example.tiendavirtual.repositories.CustomerRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service 
 public class CustomerService {
@@ -26,11 +28,14 @@ public class CustomerService {
         return customers;
     }
 
-    public Customer getByIdentification(String identification){
-        CustomerEntity customerEntity = customerRepository.getByIdentification(identification);
-        Customer customer = CustomerMapper.entityToModel(customerEntity);
-        return customer;
+   public Customer getByIdentification(String identification){
+    CustomerEntity customerEntity = customerRepository.getByIdentification(identification);
+    if (customerEntity == null) {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente no encontrado");
     }
+    Customer customer = CustomerMapper.entityToModel(customerEntity);
+    return customer;
+}
 
     public Customer create(Customer customer){
         CustomerEntity customerEntity = CustomerMapper.modelToEntity(customer);

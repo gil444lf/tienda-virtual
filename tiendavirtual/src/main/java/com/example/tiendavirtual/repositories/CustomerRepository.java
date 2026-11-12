@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 
 import com.example.tiendavirtual.entities.CustomerEntity;
@@ -13,8 +12,11 @@ import com.example.tiendavirtual.entities.CustomerEntity;
 @Primary  
 public class CustomerRepository {
 
-    @Autowired 
-    private ICustomerJpaRepository repository;
+    private final ICustomerJpaRepository repository;
+
+    CustomerRepository(ICustomerJpaRepository repository) {
+        this.repository = repository;
+    }
     
     public List<CustomerEntity> getAllCustomerEntity(){
        List<CustomerEntity> customersEntity = repository.findAll();
