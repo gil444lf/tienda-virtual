@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.tiendavirtual.controllers.InvoiceResponseDto;
 import com.example.tiendavirtual.entities.CustomerEntity;
 import com.example.tiendavirtual.entities.InvoiceEntity;
 import com.example.tiendavirtual.entities.ProductEntity;
@@ -33,6 +34,14 @@ public class InvoiceService {
         this.productRepository = productRepository;
     }
 
+    public List <Invoice> getAllInvoices() {
+        List<InvoiceEntity> invoiceEntities = invoiceRepository.getAll();
+        List<Invoice> invoices = new ArrayList<>();
+        
+        }
+        return invoices;
+    }
+
     public  Invoice create(Invoice invoice){
         InvoiceEntity invoiceEntity = new InvoiceEntity();
         invoiceEntity.setNumber(invoice.getNumber());
@@ -56,6 +65,11 @@ public class InvoiceService {
         return invoiceCreate;
         
         
+    }
+
+    public List<InvoiceResponseDto> getInvoices() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getInvoices'");
     }
 
    

@@ -1,8 +1,6 @@
 package com.example.tiendavirtual.mappers;
-
-import org.hibernate.mapping.List;
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 
 import com.example.tiendavirtual.dtos.InvoiceCreateDto;
 import com.example.tiendavirtual.dtos.InvoiceResponseDto;
@@ -60,6 +58,8 @@ public class InvoiceMapper {
         invoiceResponseDto.setNumber(invoice.getNumber());
         invoiceResponseDto.setDate(invoice.getDate());
         invoiceResponseDto.setTotal(invoice.getTotal());
+        invoiceResponseDto.setCustomerId(invoice.getCustomerId());
+        invoiceResponseDto.setProductIds(invoice.getProductIds());
         return invoiceResponseDto;
     }
 }

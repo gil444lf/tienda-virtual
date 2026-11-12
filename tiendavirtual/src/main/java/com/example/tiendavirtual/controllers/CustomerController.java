@@ -22,7 +22,7 @@ import com.example.tiendavirtual.services.CustomerService;
 
 
 @RestController 
-@RequestMapping("/api/customer")
+@RequestMapping("/api/invoice")
 public class CustomerController {
 
     private final CustomerService customerService;
